@@ -41,83 +41,91 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(250, 98);
+            textBox1.Location = new Point(322, 131);
+            textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(261, 23);
+            textBox1.Size = new Size(335, 28);
             textBox1.TabIndex = 2;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(250, 205);
+            textBox2.Location = new Point(322, 274);
+            textBox2.Margin = new Padding(3, 4, 3, 4);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(261, 23);
+            textBox2.Size = new Size(335, 28);
             textBox2.TabIndex = 3;
+            textBox2.UseSystemPasswordChar = true;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(359, 80);
+            label1.Location = new Point(457, 106);
             label1.Name = "label1";
-            label1.Size = new Size(45, 15);
+            label1.Size = new Size(61, 20);
             label1.TabIndex = 4;
             label1.Text = "Пошта";
-            label1.Click += label1_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(355, 187);
+            label2.Location = new Point(457, 249);
             label2.Name = "label2";
-            label2.Size = new Size(49, 15);
+            label2.Size = new Size(59, 20);
             label2.TabIndex = 5;
             label2.Text = "Пароль";
             // 
             // button1
             // 
-            button1.Location = new Point(322, 282);
+            button1.Location = new Point(399, 376);
+            button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new Size(126, 23);
+            button1.Size = new Size(162, 40);
             button1.TabIndex = 6;
             button1.Text = "Зареєструватись";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(250, 148);
+            textBox3.Location = new Point(322, 197);
+            textBox3.Margin = new Padding(3, 4, 3, 4);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(261, 23);
+            textBox3.Size = new Size(335, 28);
             textBox3.TabIndex = 7;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(359, 130);
+            label3.Location = new Point(461, 174);
             label3.Name = "label3";
-            label3.Size = new Size(28, 15);
+            label3.Size = new Size(39, 20);
             label3.TabIndex = 8;
             label3.Text = "Ім'я";
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(250, 253);
+            textBox4.Location = new Point(322, 337);
+            textBox4.Margin = new Padding(3, 4, 3, 4);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(261, 23);
+            textBox4.Size = new Size(335, 28);
             textBox4.TabIndex = 9;
+            textBox4.UseSystemPasswordChar = true;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(311, 235);
+            label4.Location = new Point(399, 314);
             label4.Name = "label4";
-            label4.Size = new Size(137, 15);
+            label4.Size = new Size(178, 20);
             label4.TabIndex = 10;
             label4.Text = "Підтвердження паролю";
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = Color.Silver;
+            ClientSize = new Size(1028, 600);
             Controls.Add(label4);
             Controls.Add(textBox4);
             Controls.Add(label3);
@@ -127,6 +135,7 @@
             Controls.Add(label1);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
+            Font = new Font("Segoe Script", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
             Name = "Form1";
             Text = "Реєстрація";
             ResumeLayout(false);
@@ -135,14 +144,14 @@
 
         #endregion
 
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private Label label1;
-        private Label label2;
-        private Button button1;
-        private TextBox textBox3;
-        private Label label3;
-        private TextBox textBox4;
-        private Label label4;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label4;
     }
 }
