@@ -34,7 +34,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(134, 88);
+            label1.Location = new Point(160, 88);
             label1.Name = "label1";
             label1.Size = new Size(88, 15);
             label1.TabIndex = 0;
@@ -44,7 +44,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(988, 554);
             Controls.Add(label1);
             Name = "ControlMenu";
             Text = "Control Menu";

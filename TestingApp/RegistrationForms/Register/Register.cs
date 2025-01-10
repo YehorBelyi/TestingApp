@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json.Nodes;
 using System.Windows.Forms;
 using TestingApp.Database.Models;
 using TestingApp.RegistrationForms;
@@ -8,20 +9,28 @@ namespace TestingApp
 {
     public partial class Register : Form
     {
+        string jsonContent = File.ReadAllText("../../../appsettings.json");
+        
+            
         public SmtpSender? smtp;
         private int? confirmNumber = 0;
         private Random? random = null;
 
-        private readonly string host = "smtp.gmail.com";
-        private readonly string port = "587";
-        private readonly string password = "wwhw zqut cnun naqw";
+        private readonly string host = null;
+        private readonly string port = null;
+        private readonly string password = null;
         private string body = null;
         private readonly string subject = "Confirm registration in our testing application";
-        private readonly string emailSender = "rexetorchik@gmail.com";
+        private readonly string emailSender = null;
 
         public Register()
         {
             InitializeComponent();
+            JsonNode? jsonNode = JsonNode.Parse(jsonContent);
+            host = jsonNode["smtpHost"].ToString();
+            password = jsonNode["smtpPassword"].ToString();
+            emailSender = jsonNode["emailSender"].ToString();
+            port = jsonNode["smtpPort"].ToString();
         }
 
         private async void button1_Click(object sender, EventArgs e)
@@ -57,9 +66,9 @@ namespace TestingApp
                 string email = textBox1.Text.Trim();
                 string studentName = textBox2.Text.ToLower();
 
-                // Checking if there exists any students with similar email or name
+                // Checking if there exist any students with similar email
                 var existingStudent = db.Students.FirstOrDefault(s =>
-                    s.Email.Trim() == email || s.StudentName.ToLower() == studentName);
+                    s.Email.Trim() == email);
 
                 if (existingStudent != null)
                 {
@@ -75,6 +84,8 @@ namespace TestingApp
                         "\nIMPORTANT NOTE: Do not share this code with anyone! Also, this code must be 6-digit.";
 
                 // Send email
+                
+
                 MailData maildata = new(this, host, port, emailSender, textBox1.Text.Trim(), subject, body, password, true);
                 smtp = new SmtpSender(maildata);
                 smtp.SendMessage();
