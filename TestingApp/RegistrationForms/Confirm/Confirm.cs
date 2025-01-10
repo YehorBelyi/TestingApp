@@ -39,7 +39,8 @@ namespace TestingApp.RegistrationForms.Confirm
                 if (userCode == confirmNumber)
                 {
                     MessageBox.Show("Registration is done! Thank you!");
-                    return;
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
                 else
                 {
