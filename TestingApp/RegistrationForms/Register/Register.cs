@@ -54,12 +54,12 @@ namespace TestingApp
 
             using (TestingAppContext db = new TestingAppContext())
             {
-                string email = textBox1.Text.Trim().ToLower();
-                string studentName = textBox2.Text.Trim().ToLower();
+                string email = textBox1.Text.Trim();
+                string studentName = textBox2.Text.ToLower();
 
                 // Checking if there exists any students with similar email or name
                 var existingStudent = db.Students.FirstOrDefault(s =>
-                    s.Email.ToLower() == email || s.StudentName.ToLower() == studentName);
+                    s.Email.Trim() == email || s.StudentName.ToLower() == studentName);
 
                 if (existingStudent != null)
                 {
