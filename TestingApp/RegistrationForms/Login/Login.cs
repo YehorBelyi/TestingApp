@@ -1,33 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using TestingApp.Database.Models;
 using TestingApp.Exceptions;
+using TestingApp.MainMenu;
 
 namespace TestingApp.RegistrationForms.Login
 {
     public partial class Login : Form
     {
         Thread thread;
+
         public Login()
         {
             InitializeComponent();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void registerLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -37,7 +24,6 @@ namespace TestingApp.RegistrationForms.Login
             thread.Start();
             thread.Join();
         }
-
         private void openRegisterForm(object sender)
         {
             Application.Run(new Register());
@@ -47,29 +33,43 @@ namespace TestingApp.RegistrationForms.Login
         {
             try
             {
+
                 string userLogin = loginBox.Text.Trim();
                 string userPassword = passwordBox.Text;
 
                 using (TestingAppContext db = new TestingAppContext())
                 {
                     var existingStudent = db.Students.FirstOrDefault(s => (s.Email.Trim() == userLogin) && (s.Password == userPassword));
+
                     if (existingStudent != null)
                     {
-                        // Main menu enter
-                        MessageBox.Show("Successfully logged in");
+                        this.Hide();
+                        ControlMenu controlMenu = new ControlMenu(existingStudent);
+                        controlMenu.ShowDialog();
                         return;
                     }
-                    else
+
+                    var existingTeacher = db.Teachers.FirstOrDefault(t => (t.Email.Trim() == userLogin) && (t.Password == userPassword));
+
+                    if (existingTeacher != null)
                     {
-                        MessageBox.Show("Wrong login or password!");
+                        //this.Close();
+                        //thread = new Thread(openStudentMenu);
+                        //thread.Start();
+                        //thread.Join();
                         return;
                     }
+
+                    MessageBox.Show("Wrong login or password!");
+                    return;
                 }
-            } catch (AppException ex)
+            }
+            catch (AppException ex)
             {
                 MessageBox.Show($"Error: {ex.Message} | Code: {ex.ErrorCode}");
                 return;
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show($"Default error: {ex.Message}");
                 return;

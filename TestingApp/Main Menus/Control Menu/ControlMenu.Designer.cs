@@ -28,24 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            addTestButton = new Button();
+            signOutButton = new Button();
+            usernameInfo = new Label();
             SuspendLayout();
             // 
-            // label1
+            // addTestButton
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(160, 88);
-            label1.Name = "label1";
-            label1.Size = new Size(88, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Головне меню";
+            addTestButton.Location = new Point(12, 12);
+            addTestButton.Name = "addTestButton";
+            addTestButton.Size = new Size(75, 23);
+            addTestButton.TabIndex = 0;
+            addTestButton.Text = "Add test";
+            addTestButton.UseVisualStyleBackColor = true;
+            // 
+            // signOutButton
+            // 
+            signOutButton.Location = new Point(901, 12);
+            signOutButton.Name = "signOutButton";
+            signOutButton.Size = new Size(75, 23);
+            signOutButton.TabIndex = 1;
+            signOutButton.Text = "Exit";
+            signOutButton.UseVisualStyleBackColor = true;
+            // 
+            // usernameInfo
+            // 
+            usernameInfo.AutoSize = true;
+            usernameInfo.ForeColor = Color.IndianRed;
+            usernameInfo.Location = new Point(768, 16);
+            usernameInfo.Name = "usernameInfo";
+            usernameInfo.Size = new Size(115, 15);
+            usernameInfo.TabIndex = 2;
+            usernameInfo.Text = "Welcome, username";
             // 
             // ControlMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(988, 554);
-            Controls.Add(label1);
+            Controls.Add(usernameInfo);
+            Controls.Add(signOutButton);
+            Controls.Add(addTestButton);
             Name = "ControlMenu";
             Text = "Control Menu";
             ResumeLayout(false);
@@ -54,6 +77,8 @@
 
         #endregion
 
-        private Label label1;
+        private Button addTestButton;
+        private Button signOutButton;
+        private Label usernameInfo;
     }
 }
