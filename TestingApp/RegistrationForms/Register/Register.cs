@@ -10,8 +10,7 @@ namespace TestingApp
     public partial class Register : Form
     {
         string jsonContent = File.ReadAllText("../../../appsettings.json");
-        
-            
+
         public SmtpSender? smtp;
         private int? confirmNumber = 0;
         private Random? random = null;
@@ -61,18 +60,27 @@ namespace TestingApp
                 return;
             }
 
+            // Determine the selected user type
+            string userType = radioButton1.Checked ? "Student" : (radioButton2.Checked ? "Teacher" : null);
+
+            if (userType == null)
+            {
+                MessageBox.Show("Please select a user type (Student or Teacher).");
+                return;
+            }
+
             using (TestingAppContext db = new TestingAppContext())
             {
                 string email = textBox1.Text.Trim();
-                string studentName = textBox2.Text.ToLower();
+                string userName = textBox2.Text.ToLower();
 
-                // Checking if there exist any students with similar email
-                var existingStudent = db.Students.FirstOrDefault(s =>
-                    s.Email.Trim() == email);
+                var existingStudent = db.Students.FirstOrDefault(s => s.Email.Trim() == email);
 
-                if (existingStudent != null)
+                var existingTeacher = db.Teachers.FirstOrDefault(t => t.Email.Trim() == email);
+
+                if (existingStudent != null || existingTeacher != null)
                 {
-                    MessageBox.Show("A student with this email or name already exists!");
+                    MessageBox.Show("A user with this email already exists!");
                     return;
                 }
 
@@ -81,11 +89,9 @@ namespace TestingApp
                 confirmNumber = random.Next(100000, 999999);
 
                 body = $"Thanks for signing up into this application! To continue, please, enter this confirmation code in the app: \n{confirmNumber}" +
-                        "\nIMPORTANT NOTE: Do not share this code with anyone! Also, this code must be 6-digit.";
+                       "\nIMPORTANT NOTE: Do not share this code with anyone! Also, this code must be 6-digit.";
 
                 // Send email
-                
-
                 MailData maildata = new(this, host, port, emailSender, textBox1.Text.Trim(), subject, body, password, true);
                 smtp = new SmtpSender(maildata);
                 smtp.SendMessage();
@@ -96,9 +102,17 @@ namespace TestingApp
 
                 if (confirmResult == DialogResult.OK)
                 {
-                    var student = new Student { Email = email, StudentName = studentName, Password = textBox3.Text };
+                    if (userType == "Student")
+                    {
+                        var student = new Student { Email = email, StudentName = userName, Password = textBox3.Text };
+                        db.Students.Add(student);
+                    }
+                    else if (userType == "Teacher")
+                    {
+                        var teacher = new Teacher { Email = email, TeacherName = userName, Password = textBox3.Text };
+                        db.Teachers.Add(teacher);
+                    }
 
-                    db.Students.Add(student);
                     await db.SaveChangesAsync();
 
                     MessageBox.Show("Registration successful!");
@@ -110,7 +124,15 @@ namespace TestingApp
                 }
             }
         }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            // Optional: Additional logic for when the "Student" radio button is selected
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            // Optional: Additional logic for when the "Teacher" radio button is selected
+        }
     }
 }
-
-
