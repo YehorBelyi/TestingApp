@@ -41,6 +41,7 @@
             addTestButton.TabIndex = 0;
             addTestButton.Text = "Add test";
             addTestButton.UseVisualStyleBackColor = true;
+            addTestButton.Click += addTestButton_Click;
             // 
             // signOutButton
             // 
@@ -50,6 +51,7 @@
             signOutButton.TabIndex = 1;
             signOutButton.Text = "Exit";
             signOutButton.UseVisualStyleBackColor = true;
+            signOutButton.Click += signOutButton_Click;
             // 
             // usernameInfo
             // 

@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using TestingApp.Database.Models;
+﻿using TestingApp.Database.Models;
+using TestingApp.Main_Menus.AddForms.AddConfirmation;
 
 namespace TestingApp.MainMenu
 {
@@ -22,7 +14,6 @@ namespace TestingApp.MainMenu
             if (user is Student student)
             {
                 ConfigureForStudent(student);
-
             }
             else if (user is Teacher teacher)
             {
@@ -37,7 +28,22 @@ namespace TestingApp.MainMenu
 
         private void ConfigureForStudent(Student student)
         {
+            //addTestButton.Visible = false;
             usernameInfo.Text = $"Welcome, {student.StudentName}";
+        }
+
+        private void addTestButton_Click(object sender, EventArgs e)
+        {
+            AddConfirmation addConfirmation = new AddConfirmation();
+            addConfirmation.ShowDialog();
+            //this.Hide();
+            //EditingForm editingForm = new EditingForm();
+            //editingForm.ShowDialog();
+        }
+
+        private void signOutButton_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
