@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Threading;
-using System.Windows.Forms;
-using TestingApp.Database.Models;
+﻿using TestingApp.Database.Models;
 using TestingApp.Exceptions;
 using TestingApp.MainMenu;
 
@@ -34,8 +30,11 @@ namespace TestingApp.RegistrationForms.Login
             try
             {
 
-                string userLogin = loginBox.Text.Trim();
-                string userPassword = passwordBox.Text;
+                //string userLogin = loginBox.Text.Trim();
+                //string userPassword = passwordBox.Text;
+
+                string userLogin = "egorwhite06@gmail.com";
+                string userPassword = "gfdhjk2019";
 
                 using (TestingAppContext db = new TestingAppContext())
                 {

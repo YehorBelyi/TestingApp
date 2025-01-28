@@ -105,12 +105,12 @@ namespace TestingApp
                     if (userType == "Student")
                     {
                         var student = new Student { Email = email, StudentName = userName, Password = textBox3.Text };
-                        db.Students.Add(student);
+                        await db.Students.AddAsync(student);
                     }
                     else if (userType == "Teacher")
                     {
                         var teacher = new Teacher { Email = email, TeacherName = userName, Password = textBox3.Text };
-                        db.Teachers.Add(teacher);
+                        await db.Teachers.AddAsync(teacher);
                     }
 
                     await db.SaveChangesAsync();
