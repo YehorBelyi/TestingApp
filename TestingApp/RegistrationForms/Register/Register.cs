@@ -61,7 +61,7 @@ namespace TestingApp
             }
 
             // Determine the selected user type
-            string userType = radioButton1.Checked ? "Student" : (radioButton2.Checked ? "Teacher" : null);
+            string userType = radioButton1.Checked ? "Teacher" : (radioButton2.Checked ? "Student" : null);
 
             if (userType == null)
             {
@@ -133,6 +133,11 @@ namespace TestingApp
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             // Optional: Additional logic for when the "Teacher" radio button is selected
+        }
+
+        private void radioButton2_CheckedChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

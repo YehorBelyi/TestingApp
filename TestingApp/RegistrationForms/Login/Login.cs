@@ -30,11 +30,8 @@ namespace TestingApp.RegistrationForms.Login
             try
             {
 
-                //string userLogin = loginBox.Text.Trim();
-                //string userPassword = passwordBox.Text;
-
-                string userLogin = "egorwhite06@gmail.com";
-                string userPassword = "gfdhjk2019";
+                string userLogin = loginBox.Text.Trim();
+                string userPassword = passwordBox.Text;
 
                 using (TestingAppContext db = new TestingAppContext())
                 {

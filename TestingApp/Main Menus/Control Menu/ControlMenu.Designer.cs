@@ -31,11 +31,14 @@
             addTestButton = new Button();
             signOutButton = new Button();
             usernameInfo = new Label();
+            dataGridView1 = new DataGridView();
+            label1 = new Label();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // addTestButton
             // 
-            addTestButton.Location = new Point(12, 12);
+            addTestButton.Location = new Point(12, 16);
             addTestButton.Name = "addTestButton";
             addTestButton.Size = new Size(75, 23);
             addTestButton.TabIndex = 0;
@@ -63,16 +66,38 @@
             usernameInfo.TabIndex = 2;
             usernameInfo.Text = "Welcome, username";
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(12, 94);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(575, 319);
+            dataGridView1.TabIndex = 3;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 76);
+            label1.Name = "label1";
+            label1.Size = new Size(82, 15);
+            label1.TabIndex = 4;
+            label1.Text = "Available tests";
+            // 
             // ControlMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(988, 554);
+            Controls.Add(label1);
+            Controls.Add(dataGridView1);
             Controls.Add(usernameInfo);
             Controls.Add(signOutButton);
             Controls.Add(addTestButton);
             Name = "ControlMenu";
             Text = "Control Menu";
+            Load += ControlMenu_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -82,5 +107,7 @@
         private Button addTestButton;
         private Button signOutButton;
         private Label usernameInfo;
+        private DataGridView dataGridView1;
+        private Label label1;
     }
 }

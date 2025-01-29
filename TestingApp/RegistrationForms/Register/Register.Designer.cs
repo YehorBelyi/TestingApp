@@ -155,6 +155,7 @@
             radioButton2.TabStop = true;
             radioButton2.Text = "Student";
             radioButton2.UseVisualStyleBackColor = true;
+            radioButton2.CheckedChanged += radioButton2_CheckedChanged_1;
             // 
             // Register
             // 
