@@ -29,97 +29,82 @@
         private void InitializeComponent()
         {
             pictureBox1 = new PictureBox();
-            oneAnswerRadio = new RadioButton();
-            manyAnswersRadio = new RadioButton();
-            numericUpDown1 = new NumericUpDown();
+            weightNumber = new NumericUpDown();
             label1 = new Label();
-            richTextBox1 = new RichTextBox();
+            questionTextbox = new RichTextBox();
             label2 = new Label();
-            button1 = new Button();
+            addPictureButton = new Button();
             label3 = new Label();
             label4 = new Label();
+            addAnswerButton = new Button();
+            openFileDialog1 = new OpenFileDialog();
+            answersListbox = new ListBox();
+            ifRightChekbox = new CheckBox();
+            answerTextbox = new RichTextBox();
+            label5 = new Label();
+            saveTestButton = new Button();
+            nextQuestionButton = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)weightNumber).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(705, 12);
+            pictureBox1.Location = new Point(453, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(317, 201);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
             // 
-            // oneAnswerRadio
+            // weightNumber
             // 
-            oneAnswerRadio.AutoSize = true;
-            oneAnswerRadio.Location = new Point(12, 13);
-            oneAnswerRadio.Name = "oneAnswerRadio";
-            oneAnswerRadio.Size = new Size(87, 19);
-            oneAnswerRadio.TabIndex = 2;
-            oneAnswerRadio.TabStop = true;
-            oneAnswerRadio.Text = "One answer";
-            oneAnswerRadio.UseVisualStyleBackColor = true;
-            // 
-            // manyAnswersRadio
-            // 
-            manyAnswersRadio.AutoSize = true;
-            manyAnswersRadio.Location = new Point(12, 38);
-            manyAnswersRadio.Name = "manyAnswersRadio";
-            manyAnswersRadio.Size = new Size(100, 19);
-            manyAnswersRadio.TabIndex = 3;
-            manyAnswersRadio.TabStop = true;
-            manyAnswersRadio.Text = "Many answers";
-            manyAnswersRadio.UseVisualStyleBackColor = true;
-            // 
-            // numericUpDown1
-            // 
-            numericUpDown1.Location = new Point(12, 106);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(134, 23);
-            numericUpDown1.TabIndex = 4;
+            weightNumber.Location = new Point(119, 445);
+            weightNumber.Name = "weightNumber";
+            weightNumber.Size = new Size(134, 23);
+            weightNumber.TabIndex = 4;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 88);
+            label1.Location = new Point(119, 427);
             label1.Name = "label1";
             label1.Size = new Size(134, 15);
             label1.TabIndex = 5;
             label1.Text = "Weight for this question";
             // 
-            // richTextBox1
+            // questionTextbox
             // 
-            richTextBox1.Location = new Point(268, 52);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(341, 161);
-            richTextBox1.TabIndex = 6;
-            richTextBox1.Text = "";
+            questionTextbox.Location = new Point(16, 52);
+            questionTextbox.Name = "questionTextbox";
+            questionTextbox.Size = new Size(341, 161);
+            questionTextbox.TabIndex = 6;
+            questionTextbox.Text = "";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label2.Location = new Point(317, 13);
+            label2.Location = new Point(65, 13);
             label2.Name = "label2";
             label2.Size = new Size(241, 30);
             label2.TabIndex = 7;
             label2.Text = "Enter your question here";
             // 
-            // button1
+            // addPictureButton
             // 
-            button1.Location = new Point(795, 249);
-            button1.Name = "button1";
-            button1.Size = new Size(148, 23);
-            button1.TabIndex = 8;
-            button1.Text = "Choose picture";
-            button1.UseVisualStyleBackColor = true;
+            addPictureButton.Location = new Point(543, 249);
+            addPictureButton.Name = "addPictureButton";
+            addPictureButton.Size = new Size(148, 23);
+            addPictureButton.TabIndex = 8;
+            addPictureButton.Text = "Choose picture";
+            addPictureButton.UseVisualStyleBackColor = true;
+            addPictureButton.Click += addPictureButton_Click;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(765, 216);
+            label3.Location = new Point(513, 216);
             label3.Name = "label3";
             label3.Size = new Size(217, 15);
             label3.TabIndex = 9;
@@ -129,32 +114,105 @@
             // 
             label4.AutoSize = true;
             label4.ForeColor = Color.Red;
-            label4.Location = new Point(840, 231);
+            label4.Location = new Point(588, 231);
             label4.Name = "label4";
             label4.Size = new Size(67, 15);
             label4.TabIndex = 10;
             label4.Text = "<optional>";
             // 
+            // addAnswerButton
+            // 
+            addAnswerButton.Location = new Point(131, 369);
+            addAnswerButton.Name = "addAnswerButton";
+            addAnswerButton.Size = new Size(112, 23);
+            addAnswerButton.TabIndex = 11;
+            addAnswerButton.Text = "Add answer";
+            addAnswerButton.UseVisualStyleBackColor = true;
+            addAnswerButton.Click += addAnswerButton_Click;
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // answersListbox
+            // 
+            answersListbox.FormattingEnabled = true;
+            answersListbox.ItemHeight = 15;
+            answersListbox.Location = new Point(555, 289);
+            answersListbox.Name = "answersListbox";
+            answersListbox.Size = new Size(120, 94);
+            answersListbox.TabIndex = 12;
+            // 
+            // ifRightChekbox
+            // 
+            ifRightChekbox.AutoSize = true;
+            ifRightChekbox.Location = new Point(50, 298);
+            ifRightChekbox.Name = "ifRightChekbox";
+            ifRightChekbox.Size = new Size(15, 14);
+            ifRightChekbox.TabIndex = 13;
+            ifRightChekbox.UseVisualStyleBackColor = true;
+            // 
+            // answerTextbox
+            // 
+            answerTextbox.Location = new Point(71, 262);
+            answerTextbox.Name = "answerTextbox";
+            answerTextbox.Size = new Size(235, 96);
+            answerTextbox.TabIndex = 14;
+            answerTextbox.Text = "";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(142, 244);
+            label5.Name = "label5";
+            label5.Size = new Size(101, 15);
+            label5.TabIndex = 15;
+            label5.Text = "Write answer here";
+            // 
+            // saveTestButton
+            // 
+            saveTestButton.Location = new Point(614, 462);
+            saveTestButton.Name = "saveTestButton";
+            saveTestButton.Size = new Size(75, 23);
+            saveTestButton.TabIndex = 16;
+            saveTestButton.Text = "Save test";
+            saveTestButton.UseVisualStyleBackColor = true;
+            // 
+            // nextQuestionButton
+            // 
+            nextQuestionButton.Location = new Point(695, 462);
+            nextQuestionButton.Name = "nextQuestionButton";
+            nextQuestionButton.Size = new Size(75, 23);
+            nextQuestionButton.TabIndex = 17;
+            nextQuestionButton.Text = "Next";
+            nextQuestionButton.UseVisualStyleBackColor = true;
+            nextQuestionButton.Click += nextQuestionButton_Click;
+            // 
             // EditingForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1043, 513);
+            ClientSize = new Size(798, 493);
+            Controls.Add(nextQuestionButton);
+            Controls.Add(saveTestButton);
+            Controls.Add(label5);
+            Controls.Add(answerTextbox);
+            Controls.Add(ifRightChekbox);
+            Controls.Add(answersListbox);
+            Controls.Add(addAnswerButton);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(button1);
+            Controls.Add(addPictureButton);
             Controls.Add(label2);
-            Controls.Add(richTextBox1);
+            Controls.Add(questionTextbox);
             Controls.Add(label1);
-            Controls.Add(numericUpDown1);
-            Controls.Add(manyAnswersRadio);
-            Controls.Add(oneAnswerRadio);
+            Controls.Add(weightNumber);
             Controls.Add(pictureBox1);
             Name = "EditingForm";
             Text = "EditingForm";
             Load += EditingForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)weightNumber).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -162,14 +220,20 @@
         #endregion
 
         private PictureBox pictureBox1;
-        private RadioButton oneAnswerRadio;
-        private RadioButton manyAnswersRadio;
-        private NumericUpDown numericUpDown1;
+        private NumericUpDown weightNumber;
         private Label label1;
-        private RichTextBox richTextBox1;
+        private RichTextBox questionTextbox;
         private Label label2;
-        private Button button1;
+        private Button addPictureButton;
         private Label label3;
         private Label label4;
+        private Button addAnswerButton;
+        private OpenFileDialog openFileDialog1;
+        private ListBox answersListbox;
+        private CheckBox ifRightChekbox;
+        private RichTextBox answerTextbox;
+        private Label label5;
+        private Button saveTestButton;
+        private Button nextQuestionButton;
     }
 }
