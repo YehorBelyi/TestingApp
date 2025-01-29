@@ -8,7 +8,7 @@ namespace TestingApp.Main_Menus.EditingForm
         private Test test_;
         private Question selectedQuestion;
         private List<Answer> answerList = new List<Answer>();
-        private static byte[] thisImage;
+        private static byte[] thisImage = null;
 
         public EditingForm(Test test)
         {
@@ -30,7 +30,7 @@ namespace TestingApp.Main_Menus.EditingForm
         {
             if (string.IsNullOrEmpty(answerTextbox.Text))
             {
-                MessageBox.Show("Amswer cannot be empty!");
+                MessageBox.Show("Answer cannot be empty!");
                 return;
             }
 
@@ -58,6 +58,19 @@ namespace TestingApp.Main_Menus.EditingForm
 
         private async void nextQuestionButton_Click(object sender, EventArgs e)
         {
+
+            if (string.IsNullOrEmpty(questionTextbox.Text))
+            {
+                MessageBox.Show("Your question cannot be empty!");
+                return;
+            }
+
+
+            if (answerList.Count <= 1)
+            {
+                MessageBox.Show("Your question must have at least 2 answers!");
+                return;
+            }
             try
             {
                 if (weightNumber.Value < 0)
@@ -75,18 +88,36 @@ namespace TestingApp.Main_Menus.EditingForm
                 }
 
                 pictureBox1.Image = null;
+                thisImage = null;
                 questionTextbox.Clear();
                 weightNumber.Value = 0;
                 answerList.Clear();
                 answersListbox.Items.Clear();
 
-            } catch (Exception ex)
-                {
-                    MessageBox.Show($"Error: {ex.Message}");
-                    return;
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+                return;
+            }
 
 
-}
+        }
+
+        private void saveTestButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Test was successfully saved!");
+            this.Close();
+        }
+
+        private void deletePictureButton_Click(object sender, EventArgs e)
+        {
+            if (thisImage != null)
+            {
+                thisImage = null;
+                pictureBox1.Image = null;
+                return;
+            }
+        }
     }
 }

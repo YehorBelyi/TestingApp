@@ -12,4 +12,6 @@ public partial class Test
     public string? Description { get; set; }
 
     public virtual ICollection<Question> Questions { get; set; } = new List<Question>();
+
+    public virtual ICollection<TestResult> TestResults { get; set; } = new List<TestResult>();
 }

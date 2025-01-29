@@ -33,6 +33,8 @@
             usernameInfo = new Label();
             dataGridView1 = new DataGridView();
             label1 = new Label();
+            deleteTestButton = new Button();
+            startTestButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -84,11 +86,33 @@
             label1.TabIndex = 4;
             label1.Text = "Available tests";
             // 
+            // deleteTestButton
+            // 
+            deleteTestButton.Location = new Point(93, 16);
+            deleteTestButton.Name = "deleteTestButton";
+            deleteTestButton.Size = new Size(75, 23);
+            deleteTestButton.TabIndex = 5;
+            deleteTestButton.Text = "Delete test";
+            deleteTestButton.UseVisualStyleBackColor = true;
+            deleteTestButton.Click += deleteTestButton_Click;
+            // 
+            // startTestButton
+            // 
+            startTestButton.Location = new Point(12, 419);
+            startTestButton.Name = "startTestButton";
+            startTestButton.Size = new Size(75, 23);
+            startTestButton.TabIndex = 6;
+            startTestButton.Text = "Start test";
+            startTestButton.UseVisualStyleBackColor = true;
+            startTestButton.Click += button1_Click;
+            // 
             // ControlMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(988, 554);
+            Controls.Add(startTestButton);
+            Controls.Add(deleteTestButton);
             Controls.Add(label1);
             Controls.Add(dataGridView1);
             Controls.Add(usernameInfo);
@@ -109,5 +133,7 @@
         private Label usernameInfo;
         private DataGridView dataGridView1;
         private Label label1;
+        private Button deleteTestButton;
+        private Button startTestButton;
     }
 }

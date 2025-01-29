@@ -25,6 +25,8 @@ public partial class TestingAppContext : DbContext
 
     public virtual DbSet<Test> Tests { get; set; }
 
+    public virtual DbSet<TestResult> TestResults { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Server=KOMPUTER\\SQLEXPRESS;Database=TestingApp;Trusted_Connection=True;Encrypt=False");
@@ -96,6 +98,29 @@ public partial class TestingAppContext : DbContext
             entity.ToTable("tests");
 
             entity.Property(e => e.Name).HasMaxLength(255);
+        });
+
+        modelBuilder.Entity<TestResult>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__testResu__3213E83F350759F7");
+
+            entity.ToTable("testResults");
+
+            entity.Property(e => e.Id).HasColumnName("id");
+            entity.Property(e => e.DateTaken)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Score).HasColumnType("decimal(5, 2)");
+            entity.Property(e => e.StudentId).HasColumnName("studentId");
+            entity.Property(e => e.TestId).HasColumnName("testId");
+
+            entity.HasOne(d => d.Student).WithMany(p => p.TestResults)
+                .HasForeignKey(d => d.StudentId)
+                .HasConstraintName("FK_TestResults_Users");
+
+            entity.HasOne(d => d.Test).WithMany(p => p.TestResults)
+                .HasForeignKey(d => d.TestId)
+                .HasConstraintName("FK_TestResults_Tests");
         });
 
         OnModelCreatingPartial(modelBuilder);

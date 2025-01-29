@@ -12,4 +12,6 @@ public partial class Student
     public string StudentName { get; set; } = null!;
 
     public string Password { get; set; } = null!;
+
+    public virtual ICollection<TestResult> TestResults { get; set; } = new List<TestResult>();
 }
