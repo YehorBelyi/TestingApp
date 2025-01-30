@@ -37,6 +37,8 @@
             listBox1 = new ListBox();
             label2 = new Label();
             timerLabel = new Label();
+            newLabel = new Label();
+            questionsLeftLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -110,7 +112,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(200, 29);
+            label2.Location = new Point(200, 9);
             label2.Name = "label2";
             label2.Size = new Size(68, 15);
             label2.TabIndex = 8;
@@ -119,17 +121,37 @@
             // timerLabel
             // 
             timerLabel.AutoSize = true;
-            timerLabel.Location = new Point(283, 29);
+            timerLabel.Location = new Point(287, 9);
             timerLabel.Name = "timerLabel";
             timerLabel.Size = new Size(34, 15);
             timerLabel.TabIndex = 9;
             timerLabel.Text = "00:00";
+            // 
+            // newLabel
+            // 
+            newLabel.AutoSize = true;
+            newLabel.Location = new Point(188, 38);
+            newLabel.Name = "newLabel";
+            newLabel.Size = new Size(83, 15);
+            newLabel.TabIndex = 10;
+            newLabel.Text = "Questions left:";
+            // 
+            // questionsLeftLabel
+            // 
+            questionsLeftLabel.AutoSize = true;
+            questionsLeftLabel.Location = new Point(287, 38);
+            questionsLeftLabel.Name = "questionsLeftLabel";
+            questionsLeftLabel.Size = new Size(36, 15);
+            questionsLeftLabel.TabIndex = 11;
+            questionsLeftLabel.Text = "00/10";
             // 
             // TestingMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(965, 547);
+            Controls.Add(questionsLeftLabel);
+            Controls.Add(newLabel);
             Controls.Add(timerLabel);
             Controls.Add(label2);
             Controls.Add(listBox1);
@@ -158,5 +180,7 @@
         private ListBox listBox1;
         private Label label2;
         private Label timerLabel;
+        private Label newLabel;
+        private Label questionsLeftLabel;
     }
 }

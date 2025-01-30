@@ -106,6 +106,7 @@ namespace TestingApp.RegistrationForms.Login
             Controls.Add(loginBox);
             Name = "Login";
             Text = "LoginForm";
+            Load += Login_Load;
             ResumeLayout(false);
             PerformLayout();
         }

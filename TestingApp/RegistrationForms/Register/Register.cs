@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Text.Json.Nodes;
 using System.Windows.Forms;
 using TestingApp.Database.Models;
@@ -41,6 +42,19 @@ namespace TestingApp
                 return;
             }
 
+            var emailRegex = new System.Text.RegularExpressions.Regex(@"[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+");
+            if (!emailRegex.IsMatch(textBox1.Text.Trim()))
+            {
+                MessageBox.Show("Please enter a valid email address!");
+                return;
+            }
+
+            if (textBox2.Text.Length > 12)
+            {
+                MessageBox.Show("Your name cannot be longer than 12 characters!");
+                return;
+            }
+
             // Checking passwords
             if (string.IsNullOrWhiteSpace(textBox3.Text) || string.IsNullOrWhiteSpace(textBox4.Text))
             {
@@ -48,9 +62,10 @@ namespace TestingApp
                 return;
             }
 
-            if (textBox3.Text.Length <= 7)
+            var passwordRegex = new System.Text.RegularExpressions.Regex(@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$");
+            if (!passwordRegex.IsMatch(textBox3.Text))
             {
-                MessageBox.Show("Your password must have at least 8 symbols!");
+                MessageBox.Show("Your password must have at least 8 symbols, include one uppercase letter, one lowercase letter, and one digit.");
                 return;
             }
 
@@ -74,9 +89,9 @@ namespace TestingApp
                 string email = textBox1.Text.Trim();
                 string userName = textBox2.Text.ToLower();
 
-                var existingStudent = db.Students.FirstOrDefault(s => s.Email.Trim() == email);
+                var existingStudent = await db.Students.FirstOrDefaultAsync(s => s.Email.Trim() == email);
 
-                var existingTeacher = db.Teachers.FirstOrDefault(t => t.Email.Trim() == email);
+                var existingTeacher = await db.Teachers.FirstOrDefaultAsync(t => t.Email.Trim() == email);
 
                 if (existingStudent != null || existingTeacher != null)
                 {
@@ -136,6 +151,16 @@ namespace TestingApp
         }
 
         private void radioButton2_CheckedChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
         }

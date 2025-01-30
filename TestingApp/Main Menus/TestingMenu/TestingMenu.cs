@@ -17,6 +17,8 @@ namespace TestingApp.Main_Menus.TestingMenu
         private System.Timers.Timer _timer;
         private int _elapsedTimeInSeconds = 0;
 
+        private int maxAmountOfQuestions = 0;
+
         private Student _student;
 
         public TestingMenu(Test test,Student student)
@@ -37,10 +39,13 @@ namespace TestingApp.Main_Menus.TestingMenu
             {
                 DisplayCurrentQuestion();
                 _timer.Start();
+                questionsLeftLabel.Text = $"{currentQuestionIndex+1}/{maxAmountOfQuestions}";
             }
             else
             {
                 MessageBox.Show("No questions available for this test!");
+                _timer.Stop();
+                this.Close();
                 return;
             }
         }
@@ -128,6 +133,7 @@ namespace TestingApp.Main_Menus.TestingMenu
                 }
 
                 ++currentQuestionIndex;
+                questionsLeftLabel.Text = $"{currentQuestionIndex + 1}/{maxAmountOfQuestions}";
                 DisplayCurrentQuestion();
             }
             else
@@ -145,6 +151,7 @@ namespace TestingApp.Main_Menus.TestingMenu
                 using (TestingAppContext db = new TestingAppContext())
                 {
                     questions = db.Questions.Where(q => q.TestId == _thisTest.TestId).Include(q => q.Answers).ToList();
+                    maxAmountOfQuestions = questions.Count;
                 }
             }
             catch (Exception ex)

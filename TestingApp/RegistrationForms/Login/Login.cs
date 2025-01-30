@@ -1,4 +1,5 @@
-﻿using TestingApp.Database.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using TestingApp.Database.Models;
 using TestingApp.Exceptions;
 using TestingApp.MainMenu;
 
@@ -15,30 +16,22 @@ namespace TestingApp.RegistrationForms.Login
 
         private void registerLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.Close();
-            thread = new Thread(openRegisterForm);
-            thread.Start();
-            thread.Join();
-        }
-        private void openRegisterForm(object sender)
-        {
-            Application.Run(new Register());
+            this.Hide();
+            Register register = new Register();
+            register.ShowDialog();
+            this.Show();
         }
 
-        private void loginButton_Click(object sender, EventArgs e)
+        private async void loginButton_Click(object sender, EventArgs e)
         {
             try
             {
-
-                //string userLogin = loginBox.Text.Trim();
-                //string userPassword = passwordBox.Text;
-
-                string userLogin = "egorwhite06@gmail.com";
-                string userPassword = "gfdhjk2019";
+                string userLogin = loginBox.Text.Trim();
+                string userPassword = passwordBox.Text;
 
                 using (TestingAppContext db = new TestingAppContext())
                 {
-                    var existingStudent = db.Students.FirstOrDefault(s => (s.Email.Trim() == userLogin) && (s.Password == userPassword));
+                    var existingStudent = await db.Students.FirstOrDefaultAsync(s => (s.Email.Trim() == userLogin) && (s.Password == userPassword));
 
                     if (existingStudent != null)
                     {
@@ -48,14 +41,13 @@ namespace TestingApp.RegistrationForms.Login
                         return;
                     }
 
-                    var existingTeacher = db.Teachers.FirstOrDefault(t => (t.Email.Trim() == userLogin) && (t.Password == userPassword));
+                    var existingTeacher = await db.Teachers.FirstOrDefaultAsync(t => (t.Email.Trim() == userLogin) && (t.Password == userPassword));
 
                     if (existingTeacher != null)
                     {
-                        //this.Close();
-                        //thread = new Thread(openStudentMenu);
-                        //thread.Start();
-                        //thread.Join();
+                        this.Hide();
+                        ControlMenu controlMenu = new ControlMenu(existingTeacher);
+                        controlMenu.ShowDialog();
                         return;
                     }
 
@@ -73,6 +65,11 @@ namespace TestingApp.RegistrationForms.Login
                 MessageBox.Show($"Default error: {ex.Message}");
                 return;
             }
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

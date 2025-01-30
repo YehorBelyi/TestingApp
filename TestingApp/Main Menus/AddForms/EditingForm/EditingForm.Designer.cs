@@ -46,6 +46,7 @@
             nextQuestionButton = new Button();
             deletePictureButton = new Button();
             label6 = new Label();
+            saveChangesButton = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)weightNumber).BeginInit();
             SuspendLayout();
@@ -210,11 +211,22 @@
             label6.TabIndex = 19;
             label6.Text = "Added answers for this question";
             // 
+            // saveChangesButton
+            // 
+            saveChangesButton.Location = new Point(614, 462);
+            saveChangesButton.Name = "saveChangesButton";
+            saveChangesButton.Size = new Size(156, 23);
+            saveChangesButton.TabIndex = 20;
+            saveChangesButton.Text = "Save changes";
+            saveChangesButton.UseVisualStyleBackColor = true;
+            saveChangesButton.Click += saveChangesButton_Click;
+            // 
             // EditingForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(798, 493);
+            Controls.Add(saveChangesButton);
             Controls.Add(label6);
             Controls.Add(deletePictureButton);
             Controls.Add(nextQuestionButton);
@@ -261,5 +273,6 @@
         private Button nextQuestionButton;
         private Button deletePictureButton;
         private Label label6;
+        private Button saveChangesButton;
     }
 }

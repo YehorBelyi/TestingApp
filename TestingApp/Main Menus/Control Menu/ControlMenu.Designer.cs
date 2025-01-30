@@ -35,6 +35,8 @@
             label1 = new Label();
             deleteTestButton = new Button();
             startTestButton = new Button();
+            progressButton = new Button();
+            editTestButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -50,7 +52,7 @@
             // 
             // signOutButton
             // 
-            signOutButton.Location = new Point(901, 12);
+            signOutButton.Location = new Point(512, 16);
             signOutButton.Name = "signOutButton";
             signOutButton.Size = new Size(75, 23);
             signOutButton.TabIndex = 1;
@@ -62,7 +64,7 @@
             // 
             usernameInfo.AutoSize = true;
             usernameInfo.ForeColor = Color.IndianRed;
-            usernameInfo.Location = new Point(768, 16);
+            usernameInfo.Location = new Point(379, 20);
             usernameInfo.Name = "usernameInfo";
             usernameInfo.Size = new Size(115, 15);
             usernameInfo.TabIndex = 2;
@@ -71,7 +73,7 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 94);
+            dataGridView1.Location = new Point(12, 93);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(575, 319);
             dataGridView1.TabIndex = 3;
@@ -80,15 +82,16 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 76);
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label1.Location = new Point(209, 58);
             label1.Name = "label1";
-            label1.Size = new Size(82, 15);
+            label1.Size = new Size(178, 32);
             label1.TabIndex = 4;
             label1.Text = "Available tests";
             // 
             // deleteTestButton
             // 
-            deleteTestButton.Location = new Point(93, 16);
+            deleteTestButton.Location = new Point(174, 16);
             deleteTestButton.Name = "deleteTestButton";
             deleteTestButton.Size = new Size(75, 23);
             deleteTestButton.TabIndex = 5;
@@ -98,19 +101,41 @@
             // 
             // startTestButton
             // 
-            startTestButton.Location = new Point(12, 419);
+            startTestButton.Location = new Point(12, 418);
             startTestButton.Name = "startTestButton";
-            startTestButton.Size = new Size(75, 23);
+            startTestButton.Size = new Size(575, 40);
             startTestButton.TabIndex = 6;
             startTestButton.Text = "Start test";
             startTestButton.UseVisualStyleBackColor = true;
             startTestButton.Click += button1_Click;
             // 
+            // progressButton
+            // 
+            progressButton.Location = new Point(12, 464);
+            progressButton.Name = "progressButton";
+            progressButton.Size = new Size(575, 40);
+            progressButton.TabIndex = 7;
+            progressButton.Text = "Check your progress";
+            progressButton.UseVisualStyleBackColor = true;
+            progressButton.Click += progressButton_Click;
+            // 
+            // editTestButton
+            // 
+            editTestButton.Location = new Point(93, 16);
+            editTestButton.Name = "editTestButton";
+            editTestButton.Size = new Size(75, 23);
+            editTestButton.TabIndex = 8;
+            editTestButton.Text = "Edit test";
+            editTestButton.UseVisualStyleBackColor = true;
+            editTestButton.Click += editTestButton_Click;
+            // 
             // ControlMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(988, 554);
+            ClientSize = new Size(610, 522);
+            Controls.Add(editTestButton);
+            Controls.Add(progressButton);
             Controls.Add(startTestButton);
             Controls.Add(deleteTestButton);
             Controls.Add(label1);
@@ -135,5 +160,7 @@
         private Label label1;
         private Button deleteTestButton;
         private Button startTestButton;
+        private Button progressButton;
+        private Button editTestButton;
     }
 }
