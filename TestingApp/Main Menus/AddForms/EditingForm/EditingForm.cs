@@ -129,7 +129,8 @@ namespace TestingApp.Main_Menus.EditingForm
 
         private void saveTestButton_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Test was successfully saved!");
+            this.Close();
         }
 
         private void deletePictureButton_Click(object sender, EventArgs e)
