@@ -39,6 +39,7 @@
             label4 = new Label();
             radioButton1 = new RadioButton();
             radioButton2 = new RadioButton();
+            closeButton = new Button();
             SuspendLayout();
             // 
             // textBox1
@@ -58,6 +59,7 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(335, 25);
             textBox2.TabIndex = 3;
+            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // label1
             // 
@@ -157,12 +159,24 @@
             radioButton2.UseVisualStyleBackColor = true;
             radioButton2.CheckedChanged += radioButton2_CheckedChanged_1;
             // 
+            // closeButton
+            // 
+            closeButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            closeButton.Location = new Point(454, 479);
+            closeButton.Name = "closeButton";
+            closeButton.Size = new Size(75, 23);
+            closeButton.TabIndex = 13;
+            closeButton.Text = "Back";
+            closeButton.UseVisualStyleBackColor = true;
+            closeButton.Click += closeButton_Click;
+            // 
             // Register
             // 
             AutoScaleDimensions = new SizeF(9F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Silver;
+            BackColor = Color.Gainsboro;
             ClientSize = new Size(1028, 600);
+            Controls.Add(closeButton);
             Controls.Add(radioButton2);
             Controls.Add(radioButton1);
             Controls.Add(label4);
@@ -194,5 +208,6 @@
         public Button button1;
         private RadioButton radioButton1;
         private RadioButton radioButton2;
+        private Button closeButton;
     }
 }

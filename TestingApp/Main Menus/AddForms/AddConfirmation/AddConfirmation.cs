@@ -1,4 +1,5 @@
-﻿using TestingApp.Database.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using TestingApp.Database.Models;
 using TestingApp.Main_Menus;
 using TestingApp.MainMenu;
 
@@ -18,7 +19,7 @@ namespace TestingApp.Main_Menus.AddForms.AddConfirmation
 
             using (TestingAppContext db = new TestingAppContext())
             {
-                var existingTestEntity = db.Tests.FirstOrDefault(x => x.Name == testName);
+                var existingTestEntity = await db.Tests.FirstOrDefaultAsync(x => x.Name == testName);
 
                 if (existingTestEntity == null)
                 {
