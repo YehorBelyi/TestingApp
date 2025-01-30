@@ -35,6 +35,8 @@
             label1 = new Label();
             answersBox = new Label();
             listBox1 = new ListBox();
+            label2 = new Label();
+            timerLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -105,11 +107,31 @@
             listBox1.TabIndex = 7;
             listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(200, 29);
+            label2.Name = "label2";
+            label2.Size = new Size(68, 15);
+            label2.TabIndex = 8;
+            label2.Text = "Time spent:";
+            // 
+            // timerLabel
+            // 
+            timerLabel.AutoSize = true;
+            timerLabel.Location = new Point(283, 29);
+            timerLabel.Name = "timerLabel";
+            timerLabel.Size = new Size(34, 15);
+            timerLabel.TabIndex = 9;
+            timerLabel.Text = "00:00";
+            // 
             // TestingMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(965, 547);
+            Controls.Add(timerLabel);
+            Controls.Add(label2);
             Controls.Add(listBox1);
             Controls.Add(answersBox);
             Controls.Add(label1);
@@ -134,5 +156,7 @@
         private Label label1;
         private Label answersBox;
         private ListBox listBox1;
+        private Label label2;
+        private Label timerLabel;
     }
 }

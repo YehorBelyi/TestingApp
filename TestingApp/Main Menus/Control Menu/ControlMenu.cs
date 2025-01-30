@@ -166,7 +166,7 @@ namespace TestingApp.MainMenu
                     {
                         var testToStart = db.Tests.Include(t => t.Questions.Select(q => q.Answers)).FirstOrDefault(t => t.TestId == id);
                         this.Hide();
-                        TestingMenu testingMenu = new TestingMenu(testToStart);
+                        TestingMenu testingMenu = new TestingMenu(testToStart,(Student)_user);
                         testingMenu.ShowDialog();
                     }
                 }
