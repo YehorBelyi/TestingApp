@@ -191,6 +191,7 @@
             Font = new Font("Segoe Script", 9.75F, FontStyle.Italic, GraphicsUnit.Point, 0);
             Name = "Register";
             Text = "Реєстрація";
+            Load += Register_Load;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -49,7 +49,6 @@ namespace TestingApp.RegistrationForms
                 smcl.EnableSsl = _isSsl;
                 smcl.Port = int.Parse(_port);
 
-                // Set the method that is called back when the send operation ends.
                 smcl.SendCompleted += SendCompletedCallback;
 
                 try
@@ -75,7 +74,6 @@ namespace TestingApp.RegistrationForms
 
         private void SendCompletedCallback(object sender, AsyncCompletedEventArgs e)
         {
-            // Get the unique identifier for this asynchronous operation.
             string token = (string)e.UserState;
 
             if (e.Cancelled)
