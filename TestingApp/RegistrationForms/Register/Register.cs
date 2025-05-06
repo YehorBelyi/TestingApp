@@ -10,7 +10,7 @@ namespace TestingApp
 {
     public partial class Register : Form
     {
-        string jsonContent = File.ReadAllText("../../../appsettings.json");
+        string jsonContent = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json"));
 
         public SmtpSender? smtp;
         private int? confirmNumber = 0;
@@ -161,6 +161,11 @@ namespace TestingApp
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Register_Load(object sender, EventArgs e)
         {
 
         }

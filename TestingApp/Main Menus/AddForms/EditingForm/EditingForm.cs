@@ -135,12 +135,9 @@ namespace TestingApp.Main_Menus.EditingForm
 
         private void deletePictureButton_Click(object sender, EventArgs e)
         {
-            //if (thisImage != null)
-            //{
             thisImage = null;
             pictureBox1.Image = null;
             return;
-            //}
         }
 
         private void loadQuestionToEdit()

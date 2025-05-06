@@ -66,6 +66,7 @@
             weightNumber.Name = "weightNumber";
             weightNumber.Size = new Size(134, 23);
             weightNumber.TabIndex = 4;
+            weightNumber.Visible = false;
             // 
             // label1
             // 
@@ -75,6 +76,7 @@
             label1.Size = new Size(134, 15);
             label1.TabIndex = 5;
             label1.Text = "Weight for this question";
+            label1.Visible = false;
             // 
             // questionTextbox
             // 
